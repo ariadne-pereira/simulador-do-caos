@@ -11,3 +11,10 @@ services:
       retries: 5 # quantas vezes deve falhar
       start_period: 30s # tempo para a primeira verificação
       disable: true # desabilita o health check
+    cpuset: "0" # qual CPU quero utilizar
+    memswap_limit: 512M # quantidade de memória swap que quero utilizar
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
