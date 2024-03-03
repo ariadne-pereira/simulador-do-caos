@@ -1,0 +1,13 @@
+services:
+  simulador-do-caos:
+    image: kubedevio/simulador-do-caos:v1
+    ports:
+      - 8080:3000
+    restart: always # faz com que o container restart em qualquer caso
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"] # comando para testar o health
+      interval: 1m30s # intervalo entre as verificações
+      timeout: 30s 
+      retries: 5 # quantas vezes deve falhar
+      start_period: 30s # tempo para a primeira verificação
+      disable: true # desabilita o health check
